@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}">
+<head>
+  <meta charset="utf-8" />
+  <title>{% block page_title %}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, minimal-ui, user-scalable=yes" />
+  {% if favicon_url -%}
+  <link rel="shortcut icon" type="{{ favicon_type }}" href="{{ favicon_url }}" />
+  {%- endif %}
+{% block head %}{% endblock %}
+</head>
+<body>
+{%- block body %}{% endblock -%}
+{%- block metrika -%}
+  {% if metrika and yandex_metrika_id %}{% include "metrika.html" %}{% endif %}
+{%- endblock -%}
+</body>
+</html>

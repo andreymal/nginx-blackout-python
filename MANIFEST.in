@@ -1,0 +1,7 @@
+include Makefile
+include README.md
+include LICENSE.txt
+include NOTICE.txt
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-include nginx_blackout/templates *

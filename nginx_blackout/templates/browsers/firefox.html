@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #f9f9fa;
+  font: message-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.error-container {
+  max-width: 780px;
+  margin: 36px auto;
+  position: relative;
+  z-index: 1;
+}
+
+.error-img-wrap {
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  max-width: 38%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.error-img {
+  width: 296.4px;
+  height: 296.4px;
+  max-width: 100%;
+}
+
+.error-text-container {
+  padding-left: 38%;
+}
+
+.error-title {
+  font-size: 33px;
+  font-weight: lighter;
+  margin-bottom: 29.7px;
+}
+
+.error-content {
+  font-size: 15px;
+}
+
+.error-content ul {
+  margin: 1em 0 0 2em;
+  padding: 0;
+}
+
+.error-content ul > li {
+  margin-bottom: 0.5em;
+}
+
+.error-code {
+  color: #777;
+}
+
+.button-container {
+  text-align: right;
+}
+
+.btn {
+  box-sizing: border-box;
+  text-align: center;
+  display: inline-block;
+  font: inherit;
+  font-size: 15px;
+  border: 0;
+  border-radius: 2px;
+  text-decoration: none;
+  margin: 1.2em 4px 0;
+  padding: 0 1.5em;
+  line-height: 32px;
+  outline: none;
+  background-color: #e1e1e2;
+  color: black;
+}
+
+.btn:hover {
+  background-color: #c9c9cb;
+}
+
+.btn.btn-primary {
+  background-color: #0060df;
+  color: white;
+}
+
+.btn.btn-primary:hover {
+  background-color: #003eaa;
+}
+
+.btn:focus,
+.btn.btn-primary:focus {
+  box-shadow: 0 0 0 2px #0a84ff, 0 0 0 5px #b1d6fc;
+}
+
+@media (max-width: 959px) {
+  body {
+    padding: 0 75px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0 38px;
+  }
+
+  .error-title {
+    font-size: 26px;
+  }
+
+  .button-container.one-button .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 320px) {
+  body {
+    padding: 0 12px;
+  }
+
+  .error-img-wrap {
+    display: none;
+  }
+
+  .error-text-container {
+    padding-left: 0;
+  }
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="error-container">
+  <div class="error-text-container">
+    <div class="error-title">{% block message_title %}{% endblock %}</div>
+
+    <div class="error-content">
+      {%- block message %}{% endblock %}
+      <p class="error-code">{% block error_code %}{% endblock %}</p>
+    </div>
+  </div>
+
+  <div class="button-container one-button">{% block buttons %}
+    <a href="{% block button_link %}#{% endblock %}" target="_blank" class="btn btn-primary">
+      <span class="btn-text">{% block button_link_text %}{% endblock %}</span>
+    </a>
+  {% endblock %}</div>
+
+  <div class="error-img-wrap">
+    {%- include "browsers/includes/firefox_picture.html" -%}
+  </div>
+</div>
+
+{% endblock %}

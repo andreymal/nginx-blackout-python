@@ -1,0 +1,37 @@
+{% extends ua_template %}
+
+{% block page_title -%}
+  Сайт недоступен из-за претензий к серверу Nginx
+{%- endblock %}
+
+{% block message_title -%}
+  Сайт недоступен из-за претензий к серверу Nginx
+{%- endblock %}
+
+{% block message -%}
+  <p>
+    Разработчик Nginx Игорь Сысоев был задержан по&nbsp;уголовному делу, сфабрикованному на&nbsp;основе безосновательной претензии Рамблера, пытающегося осуществить рейдерский захват Nginx.
+    Без&nbsp;Nginx большинство сайтов в&nbsp;Интернете не&nbsp;смогут существовать, в том числе и
+    {%- if site_name %} {{ site_name }}{% else %} этот{% endif %}.
+  </p>
+{%- endblock %}
+
+{% block error_code %}IGOR_SYSOEV_ILLEGAL_SEARCH_AND_SEIZURE{% endblock %}
+
+{% block button_link -%}
+  {{- button_url -}}
+{%- endblock %}
+
+{% block button_link_text -%}
+  {%- if button_text -%}
+    {{- button_text -}}
+  {%- else -%}
+    Что случилось?
+  {%- endif -%}
+{%- endblock %}
+
+
+{% block buttons %}
+  {{- super() -}}
+  {# Можно добавить дополнительные кнопки примерно здесь #}
+{% endblock %}

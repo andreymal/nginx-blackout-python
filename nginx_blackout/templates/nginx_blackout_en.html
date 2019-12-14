@@ -1,0 +1,37 @@
+{% extends ua_template %}
+
+{% block page_title -%}
+  Website is unavailable due to claims to the Nginx server
+{%- endblock %}
+
+{% block message_title -%}
+  Website is unavailable due to claims to the Nginx server
+{%- endblock %}
+
+{% block message -%}
+  <p>
+    Igor Sysoev, a Nginx developer, was detained in a criminal case fabricated on the basis of Rambler’s baseless claim trying to raider Nginx.
+    Without Nginx, most sites on the Internet cannot exist, including
+    {%- if site_name %} {{ site_name }}{% else %} this one{% endif %}.
+  </p>
+{%- endblock %}
+
+{% block error_code %}IGOR_SYSOEV_ILLEGAL_SEARCH_AND_SEIZURE{% endblock %}
+
+{% block button_link -%}
+  {{- button_url -}}
+{%- endblock %}
+
+{% block button_link_text -%}
+  {%- if button_text -%}
+    {{- button_text -}}
+  {%- else -%}
+    What happened?
+  {%- endif -%}
+{%- endblock %}
+
+
+{% block buttons %}
+  {{- super() -}}
+  {# You can add more buttons here #}
+{% endblock %}

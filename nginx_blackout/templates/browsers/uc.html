@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: white;
+  color: #bbb;
+  font: 15px/22px Arial, Roboto-Regular, sans-serif;
+}
+
+a {
+  color: #ff9c38;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.error-container {
+  padding-top: 10%;
+}
+
+.error-img-wrap {
+  text-align: center;
+}
+
+.error-img {
+  width: 130px;
+  height: 90px;
+}
+
+.error-text-container {
+  margin: 0 auto;
+  max-width: 260px;
+  text-align: center;
+}
+
+.error-title {
+  font-size: 16px;
+  line-height: 21.5px;
+  color: #666;
+  margin: 16px 0;
+  font-weight: normal;
+}
+
+.error-content {
+  font-size: 14px;
+  line-height: 18.5px;
+}
+
+.error-content ul {
+  text-align: left;
+  max-width: 220px;
+  margin: 0 auto;
+}
+
+.button-container {
+  max-width: 300px;
+  margin: 33px auto 0;
+  text-align: center;
+}
+
+.btn {
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: center;
+  display: inline-block;
+  font: inherit;
+  font-size: 16px;
+  color: #ff9c38;
+  width: 160px;
+  height: 44px;
+  line-height: 44px;
+  border: 0;
+  border-radius: 3px;
+  margin: 16px 0;
+  background-color: #f9f9f9;
+  text-decoration: none;
+}
+
+.btn:focus {
+  outline: 1px solid #ff9c38;
+  text-decoration: none;
+}
+
+.error-code {
+  margin-top: 24px;
+  color: #bbb;
+  text-align: center;
+  font-size: 10px;
+  line-height: 13px;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="error-container">
+  <div class="error-img-wrap">
+    {%- include "browsers/includes/uc_picture.html" -%}
+  </div>
+
+  <div class="error-text-container">
+    <h1 class="error-title">{% block message_title %}{% endblock %}</h1>
+
+    <div class="error-content">
+      {%- block message %}{% endblock %}
+
+      <div class="button-container">{% block buttons %}
+        <a href="{% block button_link %}#{% endblock %}" target="_blank" class="btn btn-primary">
+          <span class="btn-text">{% block button_link_text %}{% endblock %}</span>
+        </a>
+      {% endblock %}</div>
+
+      <div class="error-code">{% block error_code %}{% endblock %}</div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

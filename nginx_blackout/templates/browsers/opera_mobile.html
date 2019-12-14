@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #fafafa;
+  font-family: "Roboto", Arial, sans-serif;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-size: 0.8em;
+  line-height: 1.5;
+
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.error-container {
+  padding: 2em;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.error-text-container {
+  text-align: center;
+}
+
+.error-title {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 1.3em;
+  font-weight: normal;
+  margin: 0.67em 0;
+}
+
+.error-img-wrap {
+  text-align: center;
+}
+
+.error-img {
+  width: 143px;
+  height: 88px;
+}
+
+.error-content {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.error-code {
+  margin-top: 16px;
+}
+
+.button-container {
+  margin-top: 40px;
+  padding-bottom: 16px;
+}
+
+.btn {
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: center;
+  display: inline-block;
+  font: inherit;
+  border: 1px solid rgb(154, 160, 166);
+  border-radius: 4px;
+  text-decoration: none;
+  margin: 0;
+  padding: 8px 16px;
+  outline: none;
+  background-color: white;
+  line-height: 1.2em;
+  color: rgb(95, 99, 104);
+}
+
+.btn:hover {
+  background-color: rgb(248, 249, 250);
+  border: 1px solid rgb(128, 134, 139);
+}
+
+.btn:focus {
+  outline: #f8aaa6 auto 1px;
+}
+
+@media screen and (orientation: landscape) {
+  .error-img {
+    width: auto;
+    height: 4em;
+  }
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="error-container">
+  <div class="error-img-wrap">
+      {%- include "browsers/includes/opera_mobile_picture.html" -%}
+  </div>
+
+  <div class="error-text-container">
+    <h1 class="error-title">{% block message_title %}{% endblock %}</h1>
+
+    <div class="error-content">
+      {%- block message %}{% endblock %}
+
+      <div class="button-container">{% block buttons %}
+        <a href="{% block button_link %}#{% endblock %}" target="_blank" class="btn btn-primary">
+          <span class="btn-text">{% block button_link_text %}{% endblock %}</span>
+        </a>
+      {% endblock %}</div>
+
+      <div class="error-code">{% block error_code %}{% endblock %}</div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

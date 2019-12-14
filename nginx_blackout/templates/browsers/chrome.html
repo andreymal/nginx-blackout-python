@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: white;
+  font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 125%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(26, 115, 232);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.error-container {
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+  font-size: 1em;
+  line-height: 1.6em;
+  margin: 14vh auto 0;
+  font-size: 75%;
+}
+
+.error-img-wrap {
+  margin-bottom: 40px;
+}
+
+.error-img {
+  width: 72px;
+  height: 72px;
+}
+
+.error-text-container {
+  /* nothing */
+}
+
+.error-title {
+  margin: 0 0 16px 0;
+  color: black;
+  font-size: 1.6em;
+  font-weight: 500;
+  line-height: 1.25em;
+}
+
+.error-content {
+  color: rgb(95, 99, 104);
+}
+
+.error-content ul {
+  margin: 0;
+}
+
+.error-content ul > li {
+  margin: 0;
+}
+
+.error-code {
+  margin-top: 12px;
+  font-size: .8em;
+  color: rgb(95, 99, 104);
+}
+
+.button-container {
+  margin-top: 51px;
+  padding-bottom: 16px;
+}
+
+.btn {
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: center;
+  display: inline-block;
+  font-family: Arial, sans-serif;
+  font-size: .875em;
+  border: 1px solid rgb(154, 160, 166);
+  border-radius: 4px;
+  text-decoration: none;
+  margin: 0;
+  padding: 8px 16px;
+  outline: none;
+  background-color: white;
+  line-height: 1.2em;
+  color: rgb(95, 99, 104);
+}
+
+.btn:hover {
+  background-color: rgb(248, 249, 250);
+  border: 1px solid rgb(128, 134, 139);
+}
+
+.btn.btn-primary {
+  background-color: rgb(26, 115, 232);
+  color: white;
+  border: 1px solid transparent;
+}
+
+.btn:focus,
+.btn.btn-primary:focus {
+  outline: #f8aaa6 auto 1px;
+}
+
+@media (max-width: 700px) {
+  .error-container {
+    padding: 0 10%;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 414px) {
+  .error-container {
+    margin-top: 4vh;
+    padding: 0 24px;
+  }
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="error-container">
+  <div class="error-img-wrap">
+    <!-- This picture is a part of Chromium -->
+    <img class="error-img" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJAAAACQAQMAAADdiHD7AAAABlBMVEUAAABTU1OoaSf/AAAAAXRSTlMAQObYZgAAAFJJREFUeF7t0cENgDAMQ9FwYgxG6WjpaIzCCAxQxVggFuDiCvlLOeRdHR9yzjncHVoq3npu+wQUrUuJHylSTmBaespJyJQoObUeyxDQb3bEm5Au81c0pSCD8HYAAAAASUVORK5CYII="  />
+  </div>
+
+  <div class="error-text-container">
+    <h1 class="error-title">{% block message_title %}{% endblock %}</h1>
+
+    <div class="error-content">
+      {%- block message %}{% endblock %}
+
+      <div class="error-code">{% block error_code %}{% endblock %}</div>
+
+      <div class="button-container">{% block buttons %}
+        <a href="{% block button_link %}#{% endblock %}" target="_blank" class="btn btn-primary">
+          <span class="btn-text">{% block button_link_text %}{% endblock %}</span>
+        </a>
+      {% endblock %}</div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+[general]
+host = "127.0.0.1"
+port = 8000
+# unix_socket = "nginx_blackout.sock"
+
+status_code = 503
+browser_cache_max_age = 0
+server_header = "not nginx"
+
+# favicon_url = "https://example.com/assets/favicon.ico"
+# favicon_type = "image/x-icon"
+
+# Можно включить Яндекс.Метрику, но помните о GDPR
+# metrika = true
+yandex_metrika_id = 56668441
+
+# random_delay_ms_min = 500
+# random_delay_ms_max = 2500
+
+[general.button_url]
+default = "https://m.habr.com/ru/company/itsumma/blog/479942/"
+en = "https://m.habr.com/en/company/itsumma/blog/479942/"
+
+# [general.site_name]
+# default = "this cool website"
+# ru = "этот крутой веб-сайт"
